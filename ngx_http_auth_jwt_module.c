@@ -182,7 +182,7 @@ ngx_http_auth_jwt_handler(ngx_http_request_t *r)
 
   alcf = ngx_http_get_module_loc_conf(r, ngx_http_auth_jwt_module);
 
-  if (alcf->active == NGX_HTTP_AUTH_JWT_DISABLED) {
+  if (alcf->active == 0 || alcf->active == NGX_HTTP_AUTH_JWT_DISABLED) {
     return NGX_DECLINED;
   }
 
