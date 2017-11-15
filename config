@@ -1,34 +1,10 @@
-ngx_feature_name=
-if [ -n "$LIBJWT_INC" -o -n "$LIBJWT_LIB" ]; then
-	ngx_feature="LibJWT library in directories specified by LIBJWT_INC ($LIBJWT_INC) and/or LIBJWT_LIB ($LIBJWT_LIB)"
-	ngx_feature_path="$LIBJWT_INC"
-	if [ $NGX_RPATH = YES ]; then
-		ngx_feature_libs="-R$LIBJWT_LIB -L$LIBJWT_LIB -ljwt"
-	else
-		ngx_feature_libs="-L$LIBJWT_LIB -ljwt"
-	fi
-	. auto/feature
-else
-	ngx_feature="LibJWT library"
-	ngx_feature_path=
-	ngx_feature_libs="-ljwt"
-	. auto/feature
-fi
-
-if [ $ngx_found = no ]; then
-	echo "$0: error: requires libjwt"
-	exit 1
-fi
-
 ngx_addon_name=ngx_http_auth_jwt_module
-CORE_INCS="$CORE_INCS $ngx_feature_path $ngx_addon_dir"
-CORE_LIBS="$CORE_LIBS $ngx_feature_libs"
-SRCS="$ngx_addon_dir/ngx_http_auth_jwt_module.c"
 
-ngx_module_type=HTTP_AUX_FILTER
-ngx_module_name=$ngx_addon_name
-ngx_module_incs=
-ngx_module_deps=
-ngx_module_srcs="$SRCS"
-ngx_module_libs=
+ngx_module_type=HTTP
+ngx_module_name=ngx_http_auth_jwt_module
+ngx_module_srcs="$ngx_addon_dir/ngx_http_auth_jwt_module.c"
+ngx_module_libs="-ljansson -ljwt"
+
 . auto/module
+
+
