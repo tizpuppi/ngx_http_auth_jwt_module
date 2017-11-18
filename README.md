@@ -19,7 +19,7 @@ In order to compile, dowload source code for nginx and this repo. From the nginx
 
 There are few directives that can be used in the configuration file in order to activate this module.
 
-# auth_jwt
+### auth_jwt
 
 The usage of this directive is identical of the one on the original nginx PLUS http_auth_jwt_module:
 
@@ -36,7 +36,7 @@ auth_jwt "Reserved site" token=$cookie_myjwtcookie
 
 The reserved value off disable the jwt protection.
 
-# auth_jwt_key_file
+### auth_jwt_key_file
 
 This directive is used to specify the file hosing the key. This must be a certificate in case JWT is encrypted using an asymmetric key encryption (RS256 for example) or the shared secret in case JWT is encrypted using a symmetric algorithm (HS256 for example).
 
@@ -46,7 +46,7 @@ Default: -
 Context: http, server, location
 ```
 
-# auth_jwt_alg
+### auth_jwt_alg
 
 This directive is used to specify which algorithm the server expects to receive in the JWT. As suggested by [Auth0](https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/) letting the creator ot the JWT to choose the encryption algorithm can leed to critical vulnerabilities.
 The specification of the algorithm is mandatory, and NONE is not accepted as a valid one.
