@@ -12,7 +12,7 @@ This module depends on openssl, libjwt and jansson C libraries.
 In order to compile, dowload source code for nginx and this repo. From the nginx folder, issue the following command.
 
 ```
-./configure --with-http_ssl_module --with-http_auth_request_module --add-module=../ngx_http_auth_jwt_module
+./configure --with-http_ssl_module --add-module=../ngx_http_auth_jwt_module
 ```
 
 ## Usage
